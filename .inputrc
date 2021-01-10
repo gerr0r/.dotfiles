@@ -1,0 +1,4 @@
+# try to prevent destroying os 
+# when copying random stuff from wherever
+# and paste it into the terminal
+set enable-bracketed-paste on

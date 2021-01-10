@@ -87,16 +87,6 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-#alias ll='ls -alF'
-alias ll='ls -hAlF --group-directories-first'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -104,6 +94,10 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
+fi
+
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -117,9 +111,5 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# UDF: enable git branch showing in a repo directory
-parse_git_branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-}
-
-export PS1="\[\033[01;32m\]\u@\h\[\033[01;00m\]:\[\033[01;34m\]\w\[\033[01;00m\]:\[\033[01;91m\]\$(parse_git_branch)\[\e[00m\]$ "
+# UDV: enable git branch showing in a repo directory
+export PS1="\[\033[01;32m\]\u@\h\[\033[01;00m\]:\[\033[01;34m\]\w\[\033[01;91m\]\$(__git_ps1)\[\e[00m\] $ "

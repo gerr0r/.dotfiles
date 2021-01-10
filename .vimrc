@@ -3,3 +3,4 @@ autocmd BufNewFile *.sh norm i#!/bin/bash
 
 set mouse=a | "enable mouse
 set number  | "row numbering
+set paste   | "mouse drag select copy
